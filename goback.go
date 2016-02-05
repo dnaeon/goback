@@ -20,7 +20,7 @@
 //	    goback.Wait(b)           // sleeps 100ms
 //  }
 //
-// Furter examples can be found in the examples folder in the repository.
+// More examples can be found in the examples folder in the repository.
 package goback
 
 import (

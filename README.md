@@ -25,7 +25,7 @@ func main() {
 }
 ```
 
-Furter examples can be found in the examples folder.
+More examples can be found in the examples folder.
 
 ## Strategies
 At the moment there are two backoff strategies implemented.
