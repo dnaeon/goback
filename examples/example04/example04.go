@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/carlescere/goback"
+	"github.com/dnaeon/goback"
 )
 
 func main() {

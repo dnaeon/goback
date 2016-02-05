@@ -6,7 +6,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/carlescere/goback"
+	"github.com/dnaeon/goback"
 )
 
 // Creates a function that will fail 6 times before connecting
