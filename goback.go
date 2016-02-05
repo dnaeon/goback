@@ -54,7 +54,7 @@ type Backoff interface {
 
 // SimpleBackoff provides a simple strategy to backoff.
 type SimpleBackoff struct {
-	Attempts    int
+	attempts    int
 	MaxAttempts int
 	Factor      float64
 	Min         time.Duration
@@ -63,12 +63,12 @@ type SimpleBackoff struct {
 
 // NextAttempt returns the duration to wait for the next retry.
 func (b *SimpleBackoff) NextAttempt() (time.Duration, error) {
-	if b.MaxAttempts > 0 && b.Attempts >= b.MaxAttempts {
+	if b.MaxAttempts > 0 && b.attempts >= b.MaxAttempts {
 		return 0, ErrMaxAttemptsExceeded
 	}
 
-	next := GetNextDuration(b.Min, b.Max, b.Factor, b.Attempts)
-	b.Attempts++
+	next := GetNextDuration(b.Min, b.Max, b.Factor, b.attempts)
+	b.attempts++
 
 	return next, nil
 }
@@ -77,7 +77,7 @@ func (b *SimpleBackoff) NextAttempt() (time.Duration, error) {
 // Further calls to NextAttempt will return the
 // minimum backoff time (if there is no error).
 func (b *SimpleBackoff) Reset() {
-	b.Attempts = 0
+	b.attempts = 0
 }
 
 // JitterBackoff provides a strategy similar to SimpleBackoff, but
@@ -87,13 +87,13 @@ type JitterBackoff SimpleBackoff
 
 // NextAttempt returns the duration to wait for the next retry.
 func (b *JitterBackoff) NextAttempt() (time.Duration, error) {
-	if b.MaxAttempts > 0 && b.Attempts >= b.MaxAttempts {
+	if b.MaxAttempts > 0 && b.attempts >= b.MaxAttempts {
 		return 0, ErrMaxAttemptsExceeded
 	}
 
-	next := GetNextDuration(b.Min, b.Max, b.Factor, b.Attempts)
+	next := GetNextDuration(b.Min, b.Max, b.Factor, b.attempts)
 	next = addJitter(next, b.Min)
-	b.Attempts++
+	b.attempts++
 
 	return next, nil
 }
