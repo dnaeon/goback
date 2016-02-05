@@ -39,7 +39,7 @@ var (
 	// ErrMaxAttemptsExceeded indicates that the maximum number of
 	// retries has excedeed.
 	// Usually to consider a service unreachable/unavailable.
-	ErrMaxAttemptsExceeded = errors.New("maximum of attempts exceeded")
+	ErrMaxAttemptsExceeded = errors.New("max number of attempts reached")
 )
 
 // Backoff is the interface that any Backoff strategy needs to implement.
