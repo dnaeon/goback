@@ -30,12 +30,12 @@ func main() {
                 Max:    60 * time.Second,
                 Factor: 2,
         )
-        goback.Wait(b)           // sleeps 100ms
-        goback.Wait(b)           // sleeps 200ms
-        goback.Wait(b)           // sleeps 400ms
-        fmt.Println(b.NextRun()) // prints 800ms
-        b.Reset()                // resets the backoff
-        goback.Wait(b)           // sleeps 100ms
+        goback.Wait(b)               // sleeps 100ms
+        goback.Wait(b)               // sleeps 200ms
+        goback.Wait(b)               // sleeps 400ms
+        fmt.Println(b.NextAttempt()) // prints 800ms
+        b.Reset()                    // resets the backoff
+        goback.Wait(b)               // sleeps 100ms
 }
 ```
 
@@ -59,7 +59,7 @@ retries and will return an error when is exceeded.
 The Jitter strategy is based on the simple backoff but adds a light
 randomisation to minimise collisions between contending clients.
 
-The result of the 'NextDuration()' method will be a random duration
+The result of the 'NextDuration()' function will be a random duration
 between `[d-min, d+min]` where `d` is the expected duration without
 jitter and `min` is the minimum duration.
 
