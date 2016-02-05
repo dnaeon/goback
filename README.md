@@ -1,8 +1,6 @@
 # goback
-[![GoDoc](https://godoc.org/github.com/carlescere/goback?status.svg)](https://godoc.org/github.com/carlescere/goback)
-[![Build Status](https://travis-ci.org/carlescere/goback.svg)](https://travis-ci.org/carlescere/goback)
-[![Coverage Status](https://coveralls.io/repos/carlescere/goback/badge.svg)](https://coveralls.io/r/carlescere/goback)
-
+[![GoDoc](https://godoc.org/github.com/dnaeon/goback?status.svg)](https://godoc.org/github.com/dnaeon/goback)
+[![Build Status](https://travis-ci.org/dnaeon/goback.svg)](https://travis-ci.org/dnaeon/goback)
 
 Goback implements a simple exponential backoff.
 
