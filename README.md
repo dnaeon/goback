@@ -59,7 +59,7 @@ retries and will return an error when is exceeded.
 The Jitter strategy is based on the simple backoff but adds a light
 randomisation to minimise collisions between contending clients.
 
-The result of the 'NextDuration()' function will be a random duration
+The result of the 'NextAttempt()' method will be a random duration
 between `[d-min, d+min]` where `d` is the expected duration without
 jitter and `min` is the minimum duration.
 

@@ -67,7 +67,7 @@ func (b *SimpleBackoff) NextAttempt() (time.Duration, error) {
 		return 0, ErrMaxAttemptsExceeded
 	}
 
-	next := GetNextDuration(b.Min, b.Max, b.Factor, b.attempts)
+	next := NextDuration(b.Min, b.Max, b.Factor, b.attempts)
 	b.attempts++
 
 	return next, nil
@@ -91,17 +91,17 @@ func (b *JitterBackoff) NextAttempt() (time.Duration, error) {
 		return 0, ErrMaxAttemptsExceeded
 	}
 
-	next := GetNextDuration(b.Min, b.Max, b.Factor, b.attempts)
+	next := NextDuration(b.Min, b.Max, b.Factor, b.attempts)
 	next = addJitter(next, b.Min)
 	b.attempts++
 
 	return next, nil
 }
 
-// GetNextDuration returns the duration for the strategies
+// NextDuration returns the duration for the strategies
 // considering the minimum and maximum durations, the factor, and the
 // number of attempts already tried.
-func GetNextDuration(min, max time.Duration, factor float64, attempts int) time.Duration {
+func NextDuration(min, max time.Duration, factor float64, attempts int) time.Duration {
 	d := time.Duration(float64(min) * math.Pow(factor, float64(attempts)))
 
 	if d > max {
